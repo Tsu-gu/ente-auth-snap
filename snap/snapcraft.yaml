@@ -1,0 +1,57 @@
+name: ente-auth-tsugu
+base: core24
+version: '4.4.4'
+summary: Safe home for your 2FA 
+description: |
+  Ente 2FA authenticator
+
+grade: stable
+confinement: strict
+
+platforms:
+  amd64:
+
+slots:
+  ente-auth-tsugu-dbus-service:
+    interface: dbus
+    bus: session
+    name: io.ente.auth
+
+parts:
+  ente-auth-tsugu:
+    source: https://github.com/ente-io/ente/releases/download/auth-v${SNAPCRAFT_PROJECT_VERSION}/ente-auth-v${SNAPCRAFT_PROJECT_VERSION}-x86_64.deb
+    plugin: dump
+    source-type: deb
+    stage-packages:
+      - libsqlite3-0
+      - libsodium23
+      - libsecret-1-0
+      - libappindicator3-1
+      - libayatana-appindicator3-1
+      - gir1.2-appindicator3-0.1 
+      - gir1.2-ayatanaappindicator3-0.1
+      - libayatana-ido3-0.4-0
+      - libproxy1v5
+
+apps:
+  ente-auth-tsugu:
+    command: usr/share/enteauth/enteauth
+    slots: [ente-auth-tsugu-dbus-service]
+    extensions: [gnome]
+    environment:
+      HOME: "$SNAP_USER_DATA"
+      TMPDIR: "$SNAP_USER_DATA/tmp"
+      LD_LIBRARY_PATH: >
+       $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy:
+       $LD_LIBRARY_PATH
+    plugs:
+      - network
+      - home
+      - removable-media
+      - desktop
+      - desktop-legacy
+      - x11
+      - wayland
+      - unity7
+      - password-manager-service
+
