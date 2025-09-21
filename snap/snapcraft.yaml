@@ -47,11 +47,9 @@ apps:
     plugs:
       - network
       - home
-      - removable-media
       - desktop
       - desktop-legacy
       - x11
       - wayland
       - unity7
-      - password-manager-service
 
