@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Ente Auth
+Exec=ente-auth-tsugu
+Icon=${SNAP}/meta/gui/ente-auth-tsugu.png
+Comment=FOSS, cross-platform 2FA app
+Terminal=false
+Type=Application
+MimeType=x-content/unix-software;
