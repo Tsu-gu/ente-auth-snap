@@ -1,1 +1,1 @@
-# ente-auth-snap
+Waiting for approval from Snapcraft
