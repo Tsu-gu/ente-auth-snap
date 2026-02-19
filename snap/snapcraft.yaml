@@ -1,6 +1,6 @@
 name: ente-auth-tsugu
 base: core24
-version: '4.4.15'
+version: '4.4.17'
 summary: Safe home for your 2FA 
 description: |
   Ente 2FA authenticator
